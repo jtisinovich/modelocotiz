@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pagína cotizaciones acciones, bonos, cripto, información técnica">
+  <meta name="author" content="Tisinovich Juan Carlos">
+  <meta name="keyword" content="Varios">
+  
+
+  <title>Info Trades Argentina</title>
+
+  
+  <link href="{{url_for('static', filename = 'bootstrap.min.css')}}" rel="stylesheet">
+
+  
+  <link href="{{url_for('static', filename = 'bootstrap-theme.css')}}" rel="stylesheet">
+  
+  <link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet">
+  
+  <link href="{{url_for('static', filename = 'style-responsive.css')}}" rel="stylesheet">
+  
+  <script src="{{url_for('static', filename='funciones.js')}}"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script type="text/javascript" src={{cdn_js|safe}}></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  
+  
+  </head>
+
+<body>
+  
+  <section id="container" class="">
+    
+
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
+
+      <!--logo start-->
+      <a href="index.html" class="logo">Ticker</a>
+      <!--logo end-->
+      
+      
+            
+      
+      
+      
+        
+      
+
+    </header>
+    
+
+
+    <aside>
+      <div id="sidebar" class="nav-collapse " style="overflow: hidden;">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          
+          <li class="sub-menu">
+                          <span><a class="nav-link" href="/">Inicio</a></span>
+            
+                                                
+          </li>
+
+        </ul>
+      </div>  
+    </aside>
+    
+
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            {% block titulo %}
+            
+            {% endblock %}
+            
+            
+        {% block content %}
+        {% endblock %}
+        
+        
+      </section>
+    </section>
+    
+    
+  </section>
+  
+</body>
+
+</html>
