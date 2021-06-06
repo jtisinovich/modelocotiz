@@ -57,6 +57,7 @@ def datos(ticker):
     fig.update_layout(showlegend=False)
     fig['layout'].update(margin=dict(l=0,r=0,b=0,t=30))
     fig.update_layout(xaxis_rangeslider_visible=False)
+    
     plot_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     
     data.sort_values("Date", ascending=False, inplace=True)
@@ -77,8 +78,15 @@ tabla["Low"] = 0
 tabla["Close"] = 0
 lista = ["GGAL", "YPF", "BMA", "CRESY", "EDN", "IRS", "LOMA", "PAM",
              "SUPV", "TEO", "TGS", "TS"]
+
+hoy = date.today()
+finstr = hoy.strftime("%d/%m/%Y")
+finstr2 = hoy.strftime("%Y-%m-%d")
+inicio = hoy - datetime.timedelta(days=300)
+iniciostr = inicio.strftime("%d/%m/%Y")
+iniciostr2 = inicio.strftime("%Y-%m-%d")
     
-df = yf.download(lista).round(2)
+df = yf.download(lista, start=iniciostr2, end=finstr2).round(2)
 
 if __name__ == '__main__':
     app.run()

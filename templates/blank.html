@@ -20,14 +20,28 @@
   <link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet">
   
   <link href="{{url_for('static', filename = 'style-responsive.css')}}" rel="stylesheet">
+  <link rel="stylesheet" media="only screen and (max-width: 768px)" href="{{url_for('static', filename = 'style.css')}}">
   
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="{{url_for('static', filename='funciones.js')}}"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script type="text/javascript" src={{cdn_js|safe}}></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   
-  
+  <style> 
+    @media only screen and (max-width: 1026px) {
+      #barra {
+          display: none;
+      }
+  }      
+          
+  </style>
+
+
   </head>
 
 <body>
@@ -41,12 +55,10 @@
       </div>
 
       <!--logo start-->
-      <a href="index1.html" class="logo">Ticker</a>
+      <a href="/" class="logo">Ticker</a>
       <!--logo end-->
-      
-      
-            
-      
+     
+
       
       
         
@@ -56,21 +68,29 @@
     
 
 
-    <aside>
-      <div id="sidebar" class="nav-collapse " style="overflow: hidden;">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu">
+
+
+
+
+   
+    <div id = "barra" class="d-none d-md-block">
+    
+      <div id="sidebar" class="nav-collapse" tabindex="5000" style="overflow: hidden; outline:none;">
+        
+        
+        <ul class="sidebar-menu", style="display:block">
           
-          <li class="sub-menu">
+          <li class>
                           <span><a class="nav-link" href="/">Inicio</a></span>
             
                                                 
           </li>
 
         </ul>
+
       </div>  
-    </aside>
-    
+    </div>
+  
 
     <section id="main-content">
       <section class="wrapper">
