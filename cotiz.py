@@ -22,10 +22,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index1():
-    lista = ["GGAL", "YPF", "BMA", "CRESY", "EDN", "IRS", "LOMA", "PAM",
-             "SUPV", "TEO", "TGS", "TS"]
     
-    df = yf.download(lista).round(2)
     for ticker in lista:
         tabla.loc[ticker,"Simbolo"] = ticker
         tabla.loc[ticker,"Open"] = df["Open"][ticker][-1].round(2)
@@ -44,7 +41,12 @@ def index1():
 
 @app.route('/datos/<ticker>')
 def datos(ticker):
-    data = yf.download(ticker).round(2)
+    data=pd.DataFrame()
+    data["Open"] = df.Open[ticker]
+    data["High"] = df.High[ticker]
+    data["Low"] = df.Low[ticker]
+    data["Close"] = df.Close[ticker]
+    data.dropna(inplace=True)
     data.reset_index(inplace=True)
     fig = go.Figure(data=[go.Candlestick(
     x=data['Date'],
@@ -73,6 +75,10 @@ tabla["Open"] = 0
 tabla["High"] = 0
 tabla["Low"] = 0
 tabla["Close"] = 0
+lista = ["GGAL", "YPF", "BMA", "CRESY", "EDN", "IRS", "LOMA", "PAM",
+             "SUPV", "TEO", "TGS", "TS"]
+    
+df = yf.download(lista).round(2)
 
 if __name__ == '__main__':
     app.run()
