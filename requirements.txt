@@ -1,7 +1,9 @@
+attrs @ file:///tmp/build/80754af9/attrs_1620827162558/work
 backcall==0.2.0
 bokeh==2.3.2
 certifi==2021.5.30
 chardet==4.0.0
+click @ file:///home/linux1/recipes/ci/click_1610990599742/work
 click-plugins==1.1.1
 cligj==0.7.2
 colorama==0.4.4
