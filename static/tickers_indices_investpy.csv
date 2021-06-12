@@ -1,0 +1,189 @@
+Entity,Code,Ticker,Nombre,Nombre2
+Afghanistan,AFG,vacio,vacio,vacio
+Albania,ALB,vacio,vacio,vacio
+Algeria,DZA,vacio,vacio,vacio
+Andorra,AND,vacio,vacio,vacio
+Angola,AGO,vacio,vacio,vacio
+Antigua and Barbuda,ATG,vacio,vacio,vacio
+Argentina,ARG,MERV,S&P Merval,^MERV
+Armenia,ARM,vacio,vacio,vacio
+Australia,AUS,AXJO,S&P/ASX 200,^AXJO
+Austria,AUT,vacio,vacio,vacio
+Azerbaijan,AZE,vacio,vacio,vacio
+Bahamas,BHS,vacio,vacio,vacio
+Bahrain,BHR,vacio,vacio,vacio
+Bangladesh,BGD,vacio,vacio,vacio
+Barbados,BRB,vacio,vacio,vacio
+Belarus,BLR,vacio,vacio,vacio
+Belgium,BEL,BFX,BEL 20,^BFX
+Belize,BLZ,vacio,vacio,vacio
+Benin,BEN,vacio,vacio,vacio
+Bhutan,BTN,vacio,vacio,vacio
+Bolivia,BOL,vacio,vacio,vacio
+Bosnia and Herzegovina,BIH,vacio,vacio,vacio
+Botswana,BWA,vacio,vacio,vacio
+Brazil,BRA,BVSP,Bovespa,^BVSP
+Brunei,BRN,vacio,vacio,vacio
+Bulgaria,BGR,vacio,vacio,vacio
+Burkina Faso,BFA,vacio,vacio,vacio
+Burundi,BDI,vacio,vacio,vacio
+Cambodia,KHM,vacio,vacio,vacio
+Cameroon,CMR,vacio,vacio,vacio
+Canada,CAN,GSPTSE,S&P/TSX,^GSPTSE
+Cape Verde,CPV,vacio,vacio,vacio
+Central African Republic,CAF,vacio,vacio,vacio
+Chad,TCD,vacio,vacio,vacio
+Chile,CHL,SPIPSA,S&P CLX IPSA,^IPSA
+China,CHN,SSEC,Shanghai,^HSI
+Colombia,COL,vacio,vacio,vacio
+Comoros,COM,vacio,vacio,vacio
+Congo,COG,vacio,vacio,vacio
+Cook Islands,COK,vacio,vacio,vacio
+Costa Rica,CRI,vacio,vacio,vacio
+Cote d'Ivoire,CIV,vacio,vacio,vacio
+Croatia,HRV,vacio,vacio,vacio
+Cuba,CUB,vacio,vacio,vacio
+Cyprus,CYP,vacio,vacio,vacio
+Czech Republic,CZE,vacio,vacio,vacio
+Democratic Republic of Congo,COD,vacio,vacio,vacio
+Denmark,DNK,vacio,vacio,vacio
+Djibouti,DJI,vacio,vacio,vacio
+Dominica,DMA,vacio,vacio,vacio
+Dominican Republic,DOM,vacio,vacio,vacio
+Ecuador,ECU,vacio,vacio,vacio
+Egypt,EGY,vacio,vacio,vacio
+El Salvador,SLV,vacio,vacio,vacio
+Equatorial Guinea,GNQ,vacio,vacio,vacio
+Eritrea,ERI,vacio,vacio,vacio
+Estonia,EST,vacio,vacio,vacio
+Ethiopia,ETH,vacio,vacio,vacio
+Fiji,FJI,vacio,vacio,vacio
+Finland,FIN,vacio,vacio,vacio
+France,FRA,FCHI,CAC 40,^FCHI
+Gabon,GAB,vacio,vacio,vacio
+Gambia,GMB,vacio,vacio,vacio
+Georgia,GEO,vacio,vacio,vacio
+Germany,DEU,GDAXI,DAX,^GDAXI
+Ghana,GHA,vacio,vacio,vacio
+Greece,GRC,vacio,vacio,vacio
+Grenada,GRD,vacio,vacio,vacio
+Guatemala,GTM,vacio,vacio,vacio
+Guinea,GIN,vacio,vacio,vacio
+Guinea-Bissau,GNB,vacio,vacio,vacio
+Guyana,GUY,vacio,vacio,vacio
+Haiti,HTI,vacio,vacio,vacio
+Honduras,HND,vacio,vacio,vacio
+Hungary,HUN,vacio,vacio,vacio
+Iceland,ISL,vacio,vacio,vacio
+India,IND,BSESN,BSE Sensex,^BSESN
+Indonesia,IDN,JKSE,IDX Composite,^JKSE
+Iran,IRN,vacio,vacio,vacio
+Iraq,IRQ,vacio,vacio,vacio
+Ireland,IRL,vacio,vacio,vacio
+Italy,ITA,FTMIB,FTSE MIB,FTSEMIB.MI
+Jamaica,JAM,vacio,vacio,vacio
+Japan,JPN,N225,Nikkei 225,^N225
+Jordan,JOR,vacio,vacio,vacio
+Kazakhstan,KAZ,vacio,vacio,vacio
+Kenya,KEN,vacio,vacio,vacio
+Kiribati,KIR,vacio,vacio,vacio
+Kuwait,KWT,vacio,vacio,vacio
+Kyrgyzstan,KGZ,vacio,vacio,vacio
+Laos,LAO,vacio,vacio,vacio
+Latvia,LVA,vacio,vacio,vacio
+Lebanon,LBN,vacio,vacio,vacio
+Lesotho,LSO,vacio,vacio,vacio
+Liberia,LBR,vacio,vacio,vacio
+Libya,LBY,vacio,vacio,vacio
+Lithuania,LTU,vacio,vacio,vacio
+Luxembourg,LUX,vacio,vacio,vacio
+Macedonia,MKD,vacio,vacio,vacio
+Madagascar,MDG,vacio,vacio,vacio
+Malawi,MWI,vacio,vacio,vacio
+Malaysia,MYS,KLSE,KLCI,^KLSE
+Maldives,MDV,vacio,vacio,vacio
+Mali,MLI,vacio,vacio,vacio
+Malta,MLT,vacio,vacio,vacio
+Marshall Islands,MHL,vacio,vacio,vacio
+Mauritania,MRT,vacio,vacio,vacio
+Mauritius,MUS,vacio,vacio,vacio
+Mexico,MEX,MXX,S&P/BMV IPC,^MXX
+Micronesia (country),FSM,vacio,vacio,vacio
+Moldova,MDA,vacio,vacio,vacio
+Mongolia,MNG,vacio,vacio,vacio
+Montenegro,MNE,vacio,vacio,vacio
+Morocco,MAR,vacio,vacio,vacio
+Mozambique,MOZ,vacio,vacio,vacio
+Myanmar,MMR,vacio,vacio,vacio
+Namibia,NAM,vacio,vacio,vacio
+Nauru,NRU,vacio,vacio,vacio
+Nepal,NPL,vacio,vacio,vacio
+Netherlands,NLD,AEX,AEX,^AEX
+New Zealand,NZL,NZ50,NZX 50,^NZ50
+Nicaragua,NIC,vacio,vacio,vacio
+Niger,NER,vacio,vacio,vacio
+Nigeria,NGA,vacio,vacio,vacio
+Niue,NIU,vacio,vacio,vacio
+North Korea,PRK,vacio,vacio,vacio
+Norway,NOR,OBX,Oslo OBX,^OBX
+Oman,OMN,vacio,vacio,vacio
+Pakistan,PAK,vacio,vacio,vacio
+Palau,PLW,vacio,vacio,vacio
+Panama,PAN,vacio,vacio,vacio
+Papua New Guinea,PNG,vacio,vacio,vacio
+Paraguay,PRY,vacio,vacio,vacio
+Peru,PER,vacio,vacio,vacio
+Philippines,PHL,vacio,vacio,vacio
+Poland,POL,vacio,vacio,vacio
+Portugal,PRT,vacio,vacio,vacio
+Qatar,QAT,vacio,vacio,vacio
+Romania,ROU,vacio,vacio,vacio
+Russia,RUS,IMOEX,MOEX,IMOEX.ME
+Rwanda,RWA,vacio,vacio,vacio
+Saint Kitts and Nevis,KNA,vacio,vacio,vacio
+Saint Lucia,LCA,vacio,vacio,vacio
+Saint Vincent and the Grenadines,VCT,vacio,vacio,vacio
+Samoa,WSM,vacio,vacio,vacio
+Sao Tome and Principe,STP,vacio,vacio,vacio
+Saudi Arabia,SAU,vacio,vacio,vacio
+Senegal,SEN,vacio,vacio,vacio
+Serbia,SRB,vacio,vacio,vacio
+Seychelles,SYC,vacio,vacio,vacio
+Sierra Leone,SLE,vacio,vacio,vacio
+Slovakia,SVK,vacio,vacio,vacio
+Slovenia,SVN,vacio,vacio,vacio
+Solomon Islands,SLB,vacio,vacio,vacio
+Somalia,SOM,vacio,vacio,vacio
+South Africa,ZAF,vacio,vacio,vacio
+South Korea,KOR,KS11,KOSPI,^KS11
+Spain,ESP,IBEX,IBEX 35,^IBEX
+Sri Lanka,LKA,vacio,vacio,vacio
+Suriname,SUR,vacio,vacio,vacio
+Swaziland,SWZ,vacio,vacio,vacio
+Sweden,SWE,OMXS30,OMXS30,^OMX
+Switzerland,CHE,SSMI,SMI,^SSMI
+Syria,SYR,vacio,vacio,vacio
+Tajikistan,TJK,vacio,vacio,vacio
+Tanzania,TZA,vacio,vacio,vacio
+Thailand,THA,vacio,vacio,vacio
+Timor,TLS,vacio,vacio,vacio
+Togo,TGO,vacio,vacio,vacio
+Tonga,TON,vacio,vacio,vacio
+Trinidad and Tobago,TTO,vacio,vacio,vacio
+Tunisia,TUN,vacio,vacio,vacio
+Turkey,TUR,vacio,vacio,vacio
+Turkmenistan,TKM,vacio,vacio,vacio
+Tuvalu,TUV,vacio,vacio,vacio
+Uganda,UGA,vacio,vacio,vacio
+Ukraine,UKR,vacio,vacio,vacio
+United Arab Emirates,ARE,vacio,vacio,vacio
+United Kingdom,GBR,FTSE,FTSE 100,^FTSE
+United States,USA,DJI,Dow 30,^GSPC
+Uruguay,URY,vacio,vacio,vacio
+Uzbekistan,UZB,vacio,vacio,vacio
+Vanuatu,VUT,vacio,vacio,vacio
+Venezuela,VEN,vacio,vacio,vacio
+Vietnam,VNM,vacio,vacio,vacio
+Yemen,YEM,vacio,vacio,vacio
+Zambia,ZMB,vacio,vacio,vacio
+Zimbabwe,ZWE,vacio,vacio,vacio

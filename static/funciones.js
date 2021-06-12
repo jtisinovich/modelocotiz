@@ -37,3 +37,16 @@ if(navigator.msSaveOrOpenBlob){
 function esperar2(ticker){
   document.location.href="datos/"+ticker;
 }
+
+function esperar3(ticker){
+  document.location.href="indice/"+ticker;
+}
+
+function mostrar(){
+  var x = document.getElementById("barra");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}

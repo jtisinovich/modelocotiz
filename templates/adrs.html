@@ -5,24 +5,14 @@
            
 {% block content %}
 
-  <div class="col-lg-12 col-md-12">
-  {{resources}}
-     
-  {{script1 | safe}}
-  {{div1 | safe}}
-  </div>
 
-  
-  
-
-<div class="col-lg-12 col-md-12">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2><i class="fa fa-flag-o red"></i><strong>Principales indices por pais</strong></h2>
+      <h2><i class="fa fa-flag-o red"></i><strong>Principales ADRs</strong></h2>
       <div class="panel-actions">
         
-    <a href="index.html#" class="btn-minimize"><img src="/static/images/exc.PNG" style="height: 18px;" class="fa fa-chevron-up"></a>
-        <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+    <a onclick="exportar('tabladatos1');" class="btn-minimize"><img src="/static/exc.png" style="height: 18px;" class="fa fa-chevron-up"></a>
+        
       </div>
     </div>
 <div class="panel-body">
@@ -39,10 +29,10 @@
   <tbody>
     {% for k in range(data|length) %}
         <tr>
-              <td><img src="/static/images/{{data.iloc[k,0]|safe}}.PNG" style="height:18px; width:20px; margin-top:-2px;"></td>
               
-              <td> <a onclick="esperar3('{{data.iloc[k,0]|safe }}', 'indice');"> {{data.iloc[k,0]}} </a> </td>
-              {% for j in cols[1:]  %}
+              
+              <td> <a onclick="esperar2('{{data.iloc[k,0]|safe }}');"> {{data.iloc[k,0]}} </a> </td>
+              {% for j in cols[:]  %}
               <td> {{data.iloc[k][j]}} </td>
               
               
@@ -56,5 +46,8 @@
 </div>
   </div>
 </div>
+  
+
+
 
 {% endblock %}
