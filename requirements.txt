@@ -1,6 +1,5 @@
 attrs==21.2.0
 backcall==0.2.0
-blas==1.0
 bokeh==2.3.2
 certifi==2021.5.30
 chardet==4.0.0
