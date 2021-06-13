@@ -39,7 +39,7 @@
   <tbody>
     {% for k in range(data|length) %}
         <tr>
-              <td><img src="/static/images/{{data.iloc[k,0]|safe}}.PNG" style="height:18px; width:20px; margin-top:-2px;"></td>
+              <td><img src="/static/images/{{data.iloc[k,0]|safe}}.png" style="height:18px; width:20px; margin-top:-2px;"></td>
               
               <td> <a onclick="esperar3('{{data.iloc[k,0]|safe }}', 'indice');"> {{data.iloc[k,0]}} </a> </td>
               {% for j in cols[1:]  %}
