@@ -62,6 +62,7 @@ def mundo():
     #Create figure object.
     p = figure(title = ' ', plot_height = 400 , plot_width = 1000, toolbar_location = None, 
                sizing_mode='scale_width', x_range=(-200, 200))
+
     p.x_range = Range1d(-200, 200)
     p.xgrid.grid_line_color = None
     p.ygrid.grid_line_color = None
@@ -94,6 +95,35 @@ def candlestick_plot(df):
     fig.vbar(df.Date[dec], width_ms, df.Open[dec], df.Close[dec], color="red")
     return fig
 
+def consultaMercadosYahoo(ticker_indices):
+    hoy = date.today()
+    
+    finstr2 = hoy.strftime("%Y-%m-%d")
+    inicio = hoy - datetime.timedelta(days=5)
+    
+    iniciostr2 = inicio.strftime("%Y-%m-%d")
+    dft = yf.download(ticker_indices, start=iniciostr2, end=finstr2)
+    dft.dropna(inplace=True)
+    porcentaje = ((dft.Close[ticker_indices] / dft.Open[ticker_indices] *100)-100).round(2)
+    ultimos_porcentaje= porcentaje[ticker_indices][-1:]
+    ultimos_porcentaje.reset_index(inplace=True)
+    a = ultimos_porcentaje.loc[0,ticker_indices]
+    lista_porcentajes = a.to_list()
+    df_2016["porcentaje"] = lista_porcentajes
+    variacion = dft.Close[ticker_indices] - dft.Open[ticker_indices]
+    ultimos_variacion= variacion[ticker_indices][-1:]
+    ultimos_variacion.reset_index(inplace=True)
+    a = ultimos_variacion.loc[0,ticker_indices]
+    lista_variacion= a.to_list()
+    df_2016["Variacion"] = lista_variacion
+    ultimo = dft.Close[ticker_indices].round(2)
+    ultimos_cotiz= ultimo[ticker_indices][-1:]
+    ultimos_cotiz.reset_index(inplace=True)
+    a = ultimos_cotiz.loc[0,ticker_indices]
+    lista_ultimos = a.to_list()
+    df_2016["Cotizacion"] = lista_ultimos
+    df_2016['colores'] = ['rojo' if x < 0 else 'verde' for x in df_2016['Variacion']]
+    return df_2016
 
 
 def consultaMercadospy(i):
@@ -131,50 +161,25 @@ def consultaMercadospy(i):
 
 @app.route('/')
 def index1():
-    ticker_indices = ["^MERV" , "^AXJO", "^BFX", "^BVSP", "^GSPTSE", "^IPSA",
-                      "^HSI", "^FCHI", "^GDAXI", "^BSESN", "^JKSE", "FTSEMIB.MI",
-                      "^N225", "^KLSE", "^MXX", "^AEX", "^NZ50", "^OBX", "IMOEX.ME",
-                      "^KS11", "^IBEX", "^OMX", "^SSMI", "^FTSE", "^GSPC"]
-
-    try:
-        for i in range(0,len(df_2016)):
-            t = threading.Thread(target=consultaMercadospy, args=(i,))
-            threads.append(t)
-            t.start()
+    #ticker_indices = ["^MERV" , "^AXJO", "^BFX", "^BVSP", "^GSPTSE", "^IPSA",
+    #                  "^HSI", "^FCHI", "^GDAXI", "^BSESN", "^JKSE", "FTSEMIB.MI",
+    #                  "^N225", "^KLSE", "^MXX", "^AEX", "^NZ50", "^OBX", "IMOEX.ME",
+    #                  "^KS11", "^IBEX", "^OMX", "^SSMI", "^FTSE", "^GSPC"]
+    ticker_indices = list(df_2016.Nombre2)
     
-        for t in threads:
-            t.join()
+    #   for i in range(0,len(df_2016)):
+    #       t = threading.Thread(target=consultaMercadospy, args=(i,))
+    #        threads.append(t)
+    #        t.start()
+    
+    #   for t in threads:
+    #        t.join()
 
-    except:
-        hoy = date.today()
-        finstr = hoy.strftime("%d/%m/%Y")
-        finstr2 = hoy.strftime("%Y-%m-%d")
-        inicio = hoy - datetime.timedelta(days=5)
-        iniciostr = inicio.strftime("%d/%m/%Y")
-        iniciostr2 = inicio.strftime("%Y-%m-%d")
-        dft=yf.download(ticker_indices, start=iniciostr2, end=finstr2)
-        porcentaje = ((dft.Close[ticker_indices] / dft.Open[ticker_indices] *100)-100).round(2)
-        ultimos_porcentaje= porcentaje[ticker_indices][-1:]
-        ultimos_porcentaje.reset_index(inplace=True)
-        a = ultimos_porcentaje.loc[0,ticker_indices]
-        lista_porcentajes = a.to_list()
-        df_2016["porcentaje"] = lista_porcentajes
-        variacion = dft.Close[ticker_indices] - dft.Open[ticker_indices]
-        ultimos_variacion= variacion[ticker_indices][-1:]
-        ultimos_variacion.reset_index(inplace=True)
-        a = ultimos_variacion.loc[0,ticker_indices]
-        lista_variacion= a.to_list()
-        df_2016["Variacion"] = lista_variacion
-        ultimo = dft.Close[ticker_indices]
-        ultimos_cotiz= ultimo[ticker_indices][-1:]
-        ultimos_cotiz.reset_index(inplace=True)
-        a = ultimos_cotiz.loc[0,ticker_indices]
-        lista_ultimos = a.to_list()
-        df_2016["Cotizacion"] = lista_ultimos
-        df_2016['colores'] = ['rojo' if x < 0 else 'verde' for x in df_2016['Variacion']]
+    consultaMercadosYahoo(ticker_indices)
         
     
     tabla, df, p = mundo()
+    tabla.loc[4,"Pais"] = "United States"
     tabla = tabla.dropna()
     cols = tabla.columns
     script1, div1 = components(p)
@@ -253,6 +258,7 @@ def indice(indice):
     nombre = df_2016.loc[ticker_ind,"Nombre"]
     
     df = yf.download(ticker, start="2019-01-01").round(2)
+    df.drop(["Volume"], axis=1, inplace=True)
     df.reset_index(inplace=True)
     fig = candlestick_plot(df)
     script1, div3 = components(fig)
