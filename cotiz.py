@@ -8,12 +8,10 @@ from flask import Flask
 from flask import render_template
 import yfinance as yf
 import pandas as pd
-import investpy as inv
 from datetime import date
 import datetime
 import json
-import threading
-from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar, CategoricalColorMapper
+from bokeh.models import GeoJSONDataSource, CategoricalColorMapper
 import geopandas as gpd
 from bokeh.plotting import figure
 from bokeh.io import output_notebook, show, output_file
@@ -26,13 +24,11 @@ app = Flask(__name__)
 def mundo():
     
     shapefile = 'static/ne_110m_admin_0_countries.shp'
-    #datafile = 'tickers_indices.csv'
-    
     gdf = gpd.read_file(shapefile)[['ADMIN', 'ADM0_A3', 'geometry']]
     gdf.columns = ['country', 'country_code', 'geometry']
     gdf = gdf.drop(gdf.index[159])
     
-    #Perform left merge to preserve every row in gdf.
+    
     merged = gdf.merge(df_2016, left_on = 'country_code', right_on = 'Code', how = 'left')
     merged.drop("Code", axis=1, inplace=True)
     merged.drop("entity",axis=1,  inplace=True)
@@ -44,22 +40,16 @@ def mundo():
 
     merged.colores = merged.colores.fillna("gris")
 
-    #Read data to json
+    #Lee datos a Json
     merged_json = json.loads(merged.to_json())
-
-    #Convert to str like object
     json_data = json.dumps(merged_json)
 
-
-    #Input GeoJSON source that contains features for plotting.
+    #GeoJason para PLot
     geosource = GeoJSONDataSource(geojson = json_data)
-
-    
-    #Instantiate LinearColorMapper that linearly maps numbers in a range, into a sequence of colors.
+   
     color_mapper = CategoricalColorMapper(palette=["red", "green", "white"], factors=["rojo", "verde", "gris"])
 
-
-    #Create figure object.
+ 
     p = figure(title = ' ', plot_height = 400 , plot_width = 1000, toolbar_location = None, 
                sizing_mode='scale_width', x_range=(-200, 200))
 
@@ -67,17 +57,18 @@ def mundo():
     p.xgrid.grid_line_color = None
     p.ygrid.grid_line_color = None
 
-    #Add patch renderer to figure. 
+     
     p.patches('xs','ys', source = geosource,fill_color = {'field' :'colores', 'transform' : color_mapper},
               line_color = 'black', line_width = 0.25, fill_alpha = 1)
 
     output_notebook()
 
-    #Display figure.
+    
     return tabla, merged, p
 
+
 def candlestick_plot(df):
-    #df.reset_index(inplace=True)
+    
     df["Date"] = pd.to_datetime(df["Date"])
 
     fig = figure(sizing_mode='scale_width', plot_height = 350 , plot_width = 1000, 
@@ -126,55 +117,11 @@ def consultaMercadosYahoo(ticker_indices):
     return df_2016
 
 
-def consultaMercadospy(i):
-    
-    
-        
-        nombre= df_2016.loc[i, "Nombre"]
-        pais = df_2016.loc[i,"entity"]
-        hoy = date.today()
-        finstr = hoy.strftime("%d/%m/%Y")
-        finstr2 = hoy.strftime("%Y-%m-%d")
-        inicio = hoy - datetime.timedelta(days=5)
-        iniciostr = inicio.strftime("%d/%m/%Y")
-        iniciostr2 = inicio.strftime("%Y-%m-%d")
-        
-        cotiz = inv.get_index_historical_data(nombre, pais, from_date = iniciostr,
-                                       to_date = finstr)
-    
-            
-        
-        variacion = cotiz.Close[-1] - cotiz.Open[-1]
-        df_2016.loc[i,"Cotizacion"] = cotiz.Close[-1]
-        if variacion >= 0:
-                df_2016.loc[i,"colores"] = "verde"
-                df_2016.loc[i,"porcentaje"] = ((cotiz.Close[-1] / cotiz.Open[-1] *100)-100).round(2)
-        else:
-                df_2016.loc[i,"colores"] = "rojo"
-                df_2016.loc[i,"porcentaje"] = ((cotiz.Close[-1] / cotiz.Open[-1] *100)-100).round(2)
- 
-        
-        return         
-
-
-
-
 @app.route('/')
 def index1():
-    #ticker_indices = ["^MERV" , "^AXJO", "^BFX", "^BVSP", "^GSPTSE", "^IPSA",
-    #                  "^HSI", "^FCHI", "^GDAXI", "^BSESN", "^JKSE", "FTSEMIB.MI",
-    #                  "^N225", "^KLSE", "^MXX", "^AEX", "^NZ50", "^OBX", "IMOEX.ME",
-    #                  "^KS11", "^IBEX", "^OMX", "^SSMI", "^FTSE", "^GSPC"]
+    
     ticker_indices = list(df_2016.Nombre2)
     
-    #   for i in range(0,len(df_2016)):
-    #       t = threading.Thread(target=consultaMercadospy, args=(i,))
-    #        threads.append(t)
-    #        t.start()
-    
-    #   for t in threads:
-    #        t.join()
-
     consultaMercadosYahoo(ticker_indices)
         
     
@@ -199,10 +146,10 @@ def adrs():
     
     
     hoy = date.today()
-    finstr = hoy.strftime("%d/%m/%Y")
+    
     finstr2 = hoy.strftime("%Y-%m-%d")
     inicio = hoy - datetime.timedelta(days=300)
-    iniciostr = inicio.strftime("%d/%m/%Y")
+    
     iniciostr2 = inicio.strftime("%Y-%m-%d")
     
     df_adr = yf.download(lista, start=iniciostr2, end=finstr2).round(2)
@@ -217,9 +164,7 @@ def adrs():
     
     
     cols=tabla.columns
-    #fig = candlestick_plot(tabla)
-    #script1, div1 = components(fig)
-    #cdn_js=CDN.js_files[0]
+    
     
     return render_template('adrs.html', 
                             data=tabla, cols=cols, passstatic_url_path='/static')
@@ -228,10 +173,8 @@ def adrs():
 @app.route('/datos/<ticker>')
 def datos(ticker):
     hoy = date.today()
-    finstr = hoy.strftime("%d/%m/%Y")
     finstr2 = hoy.strftime("%Y-%m-%d")
     inicio = hoy - datetime.timedelta(days=300)
-    iniciostr = inicio.strftime("%d/%m/%Y")
     iniciostr2 = inicio.strftime("%Y-%m-%d")
     
     data= yf.download(ticker, start=iniciostr2, end=finstr2)
@@ -289,8 +232,6 @@ df = pd.read_csv(datafile, names = ['entity', 'Code', 'ticker', "Nombre", "Nombr
 
 df_2016 = df[df['ticker'] != "vacio"]
 df_2016 = df_2016.dropna()
-threads = []
-workers = 5
 df_2016.reset_index(inplace=True)
 df_2016.drop(["index"], axis=1, inplace=True)
 
