@@ -177,7 +177,7 @@ def datos(ticker):
     inicio = hoy - datetime.timedelta(days=300)
     iniciostr2 = inicio.strftime("%Y-%m-%d")
     
-    data= yf.download(ticker, start=iniciostr2, end=finstr2)
+    data= yf.download(ticker, start=iniciostr2, end=finstr2).round(2)
     data.reset_index(inplace=True)
     fig = candlestick_plot(data)
     script1, div2 = components(fig)
